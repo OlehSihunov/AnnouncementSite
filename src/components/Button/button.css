@@ -1,0 +1,15 @@
+.custombtn{
+    font-weight: bold;
+    box-sizing: border-box;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    text-transform:uppercase;
+    box-shadow: 0px 0px 4px 1px  #000000e6;
+}
+.custombtn:hover{
+    box-shadow: 0px 0px 7px 2px  #000000e6;
+    transition: 0.4s;
+}
