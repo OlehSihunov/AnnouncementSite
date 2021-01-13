@@ -8,6 +8,8 @@
     margin: 5px;
     text-transform:uppercase;
     box-shadow: 0px 0px 4px 1px  #000000e6;
+    max-width: 150px;
+    justify-content: center;
 }
 .custombtn:hover{
     box-shadow: 0px 0px 7px 2px  #000000e6;
