@@ -1,3 +1,5 @@
 .articleContainer{
     min-height: 650px;
+    width: 80%;
+    margin-left:10%;
 }
