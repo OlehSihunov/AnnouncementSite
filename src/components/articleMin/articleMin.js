@@ -8,6 +8,9 @@ export default function ArticleMin({id}){
     const {removeArticle,getArticles} = React.useContext(Context)
    
     const art = getArticles().find(art=>art.id===parseInt(id))
+    let  goToArticle = function () {
+     window.location.href = `/article/${id}`   
+    }
     return(
         
         <div className ="articleMin">
@@ -18,7 +21,7 @@ export default function ArticleMin({id}){
            
             <div className="buttonBlock">
                     <Button btntext="Delete" reaction ={removeArticle} argument={id}></Button>
-                    <Button btntext="More" link={`article/${id}`} reaction ={removeArticle} argument={id}></Button>
+                    <Button btntext="More"  reaction ={goToArticle} argument={id}></Button>
             </div>
         </div>
     )

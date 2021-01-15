@@ -19,7 +19,7 @@ export default function Article({id}){
                  </div>
                 <div className="buttonBlock">
                     <Button btntext="Find Same" link={``} reaction ={removeArticle} argument={id}></Button>
-                    <Button btntext="Edit" reaction ={removeArticle} argument={id}></Button>
+                    <Button btntext="Edit" reaction ={()=>{}} argument={id}></Button>
                     <Button btntext="Delete" reaction ={removeArticle} argument={id}></Button>
                 </div>
                 

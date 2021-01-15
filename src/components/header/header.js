@@ -4,15 +4,15 @@ import Search from '../search/search'
 import './header.css'
 
 export default function Header(){
-    let addNewAnn = function(article){
-        console.log(article)
+    let showAll = function(){
+        window.location.href="/"
     }
 
     return(
         <div className ="header">
-            <Button link="/" btntext ="ShowList" reaction ={addNewAnn}></Button>
+            <Button  btntext ="ShowList" reaction ={showAll}></Button>
             <Search>Search</Search>
-            <Button  btntext ="ADd" reaction ={addNewAnn}></Button>
+            <Button  btntext ="ADd" reaction ={showAll}></Button>
             
         </div>
     )
