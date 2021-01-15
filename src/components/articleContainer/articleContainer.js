@@ -1,11 +1,20 @@
 import React from 'react'
-import Article from '../article/article'
+import Context from '../../context'
+import ArticleMin from '../articleMin/articleMin'
 import './articleContainer.css'
-export default function ArticleContainer({Articles}){
+export default function ArticleContainer({Articles=[]}){
+    const {getSearch , getArticles} = React.useContext(Context)
+    if(Articles.length===0){
+        Articles = getArticles()
+    }
+    function filteredArticles() {
+        return Articles.filter(art=>art.title.toLowerCase().includes(getSearch().toLowerCase()))
+    }
+    
     return(
         <div className ="articleContainer">
-            {Articles.map(({id,date,title,text}) => {
-                return <Article date={date} title={title} text={text} id = {id} key ={id}></Article>
+            {filteredArticles().map(({id}) => {
+                return <ArticleMin id = {id} key ={id}></ArticleMin>
             })}
         </div>
     )

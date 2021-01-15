@@ -7,9 +7,10 @@ export default function Header(){
     let addNewAnn = function(article){
         console.log(article)
     }
+
     return(
         <div className ="header">
-            <Button btntext ="ShowList" reaction ={addNewAnn}></Button>
+            <Button link="/" btntext ="ShowList" reaction ={addNewAnn}></Button>
             <Search>Search</Search>
             <Button  btntext ="ADd" reaction ={addNewAnn}></Button>
             

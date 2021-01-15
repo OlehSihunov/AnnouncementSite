@@ -2,7 +2,8 @@ import React from 'react'
 import Context from './context';
 import Header from './components/header/header'
 import ArticleContainer from './components/articleContainer/articleContainer'
-
+import { BrowserRouter, Route } from 'react-router-dom';
+import SingleArticle from './components/currentArticle/currentArticle';
 function App() {
   let [articles, setArticles] =React.useState([
     {
@@ -30,17 +31,29 @@ function App() {
       text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
   ])
+  let [searchInp, setSearch] =React.useState('')
+
+  function getSearch(){
+      return searchInp;
+  }
+  function getArticles(){
+    return articles;
+}
   function removeArticle(id){
     setArticles(articles.filter(ar => ar.id!==id))
   }
-
   return (
-    <Context.Provider value ={{removeArticle}}>
+    <BrowserRouter>
+    <Context.Provider value ={{removeArticle,setSearch,getSearch,getArticles}}>
       <div className="App">
       <Header></Header>
-      <ArticleContainer Articles ={articles}></ArticleContainer>
+     
+      <Route exact  path="/article/:id" component={SingleArticle}></Route>
+     <Route exact path="/" component = {ArticleContainer}></Route>
+     
       </div>
     </Context.Provider>
+    </BrowserRouter>
   );
 }
 
