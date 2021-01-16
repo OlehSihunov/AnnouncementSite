@@ -8,7 +8,7 @@ export default function ArticleContainer({Articles=[]}){
         Articles = getArticles()
     }
     function filteredArticles() {
-        console.log(Articles)
+       
         return Articles.filter(art=>art.title.toLowerCase().includes(getSearch().toLowerCase()))
     }
     

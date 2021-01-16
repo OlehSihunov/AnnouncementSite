@@ -1,0 +1,24 @@
+.modalOverlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    background: rgba(155, 0, 67, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalWindow{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    background-color: black;
+    color:white;
+    display: flex;
+    flex-direction: column;
+}
+.hide{
+    display: none;
+}

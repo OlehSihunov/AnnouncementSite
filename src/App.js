@@ -4,8 +4,8 @@ import Header from './components/header/header'
 import ArticleContainer from './components/articleContainer/articleContainer'
 import { BrowserRouter, Route } from 'react-router-dom';
 import SingleArticle from './components/currentArticle/currentArticle';
+import Modal from './components/modal/modal';
 function App() {
-  console.log('Ho ho')
   
  
   let [articles, setArticles] =React.useState(
@@ -37,7 +37,8 @@ function App() {
     ]
   )
   let [searchInp, setSearch] =React.useState('')
-
+  let [activeModal,setActiveModal] = React.useState(false)
+  let [modalArticle,setModalArticle] = React.useState({})
   function getSearch(){
       return searchInp;
   }
@@ -51,12 +52,39 @@ function App() {
     setArticles(JSON.parse(sessionStorage.getItem('articles')))
     window.location.href="/"
   }
+  function modifyArticle(newArticle) {
+    console.log("modifyArticle")
+    let ind = articles.findIndex(art =>art.id===newArticle.id)
+    console.log(ind)
+    if(ind!==-1){
+      console.log('modify')
+      let art  = (articles.filter(ar => ar.id!==newArticle.id))
+      art.splice(ind,0,newArticle)
+      sessionStorage.setItem('articles', JSON.stringify(art));
+    }
+    else{
+      console.log("addnew")
+      let art = [...articles,newArticle]
+      console.log(art)
+      sessionStorage.setItem('articles', JSON.stringify(art));
+    }
+    window.location.reload()
+   
+  }
+ 
+  function switchModal() {
+    setActiveModal(!activeModal)
+  }
+  function changeModalArticle(newArticle) {
+    setModalArticle(newArticle)
+  }
   return (
     <BrowserRouter>
-    <Context.Provider value ={{removeArticle,setSearch,getSearch,getArticles}}>
+    <Context.Provider value ={{removeArticle,setSearch,getSearch,getArticles,changeModalArticle,switchModal,modifyArticle}}>
       <div className="App">
       <Header></Header>
-     
+      <Modal Article = {modalArticle} Active = {activeModal}></Modal>
+      <Route exact path="/modal" component={Modal}></Route>
       <Route exact  path="/article/:id" component={SingleArticle}></Route>
      <Route exact path="/" component = {ArticleContainer}></Route>
      
